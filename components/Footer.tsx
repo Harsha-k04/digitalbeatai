@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-1">
              <div className="flex items-center gap-2 mb-4">
                  <div className="w-8 h-8 rounded-full overflow-hidden bg-white">
-                    <img src="/mnt/data/0505cd13-690d-4a10-981a-876f5e3df2c1.png" alt="Logo" className="w-full h-full object-cover"/>
+                    <img src="/LOGO.jpg" alt="Logo" className="w-full h-full object-cover"/>
                  </div>
                 <span className="text-xl font-bold text-white">DigitalBeatAI</span>
              </div>
