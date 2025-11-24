@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
           <Link to="/" className="flex items-center gap-2 group">
              <div className="relative w-8 h-8 overflow-hidden rounded-full border border-gray-200 group-hover:border-purple-500 transition-colors">
                  <img 
-                    src="public\LOGO.jpg" 
+                    src="/LOGO.jpg" 
                     alt="DigitalBeatAI Logo" 
                     className="object-cover w-full h-full"
                  />
