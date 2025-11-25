@@ -8,6 +8,8 @@ import About from './pages/About';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import Analytics from './components/Analytics';
+import ProtectedUpload from './components/ProtectedUpload';
+
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -32,6 +34,7 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/upload" element={<ProtectedUpload />} />
           </Routes>
         </main>
         <Footer />
