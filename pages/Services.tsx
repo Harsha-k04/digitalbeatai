@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { GoogleGenAI } from '@google/genai';
+import SpotifySection from "../components/SpotifySection";  // ⭐ REQUIRED IMPORT
 
 const Services: React.FC = () => {
     const [prompt, setPrompt] = useState('');
-       const [idea, setIdea] = useState('');
+    const [idea, setIdea] = useState('');
     const [loading, setLoading] = useState(false);
 
     const handleBrainstorm = async () => {
@@ -56,7 +57,7 @@ const Services: React.FC = () => {
             icon: "📱"
         },
 
-        // ⭐ NEW SERVICE ADDED HERE
+        // ⭐ NEW SERVICE
         {
             title: "Influencer Marketing Campaigns",
             desc: "Boost your brand visibility by partnering with influencers chosen through AI-powered discovery.",
@@ -138,6 +139,9 @@ const Services: React.FC = () => {
                         )}
                     </div>
                 </div>
+
+                {/* ⭐ Spotify Section Added */}
+                <SpotifySection spotifyEmbedUrl="https://open.spotify.com/embed/episode/YOUR_EPISODE_ID" />
             </div>
         </div>
     );
