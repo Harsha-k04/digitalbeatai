@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import UploadForm from '../components/UploadForm';
 
 const Home: React.FC = () => {
   return (
     <div className="bg-white">
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-slate-50 pt-20 pb-32 lg:pt-32">
         <div className="absolute top-0 left-0 w-full h-full">
@@ -35,32 +35,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Upload Section */}
-      <section className="py-20 relative bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="order-2 md:order-1">
-                    <h2 className="text-3xl font-bold text-slate-900 mb-4">Start Your Project Now</h2>
-                    <p className="text-slate-600 mb-8">
-                        Upload your raw footage, audio, or scripts directly. Our secure pipeline sends your assets to our hybrid AI-Human workflow.
-                    </p>
-                    <ul className="space-y-4 mb-8">
-                        {['Fast Turnaround (24-48hrs)', 'Encrypted Transfer', 'Auto-generated Metadata'].map((item, i) => (
-                            <li key={i} className="flex items-center text-slate-700">
-                                <svg className="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                </svg>
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                <div className="order-1 md:order-2">
-                    <UploadForm />
-                </div>
-            </div>
-        </div>
-      </section>
+      {/* Upload Section Removed */}
 
       {/* Services Preview */}
       <section className="bg-slate-50 py-24">
@@ -85,6 +60,7 @@ const Home: React.FC = () => {
             </div>
         </div>
       </section>
+
     </div>
   );
 };
