@@ -7,6 +7,9 @@ const Services: React.FC = () => {
     const [idea, setIdea] = useState('');
     const [loading, setLoading] = useState(false);
 
+    // NEW: toggles the AI Video Creation examples
+    const [showVideos, setShowVideos] = useState(false);
+
     const handleBrainstorm = async () => {
         if (!prompt) return;
         setLoading(true);
@@ -30,6 +33,19 @@ const Services: React.FC = () => {
             setLoading(false);
         }
     };
+
+    // Replace these filenames with the exact names you placed in public/
+    // Example: ["/reel1.mp4", "/promo_final.mp4", "/sample.mov"]
+    const VIDEO_FILES = [
+      "/video1.mp4",
+      "/video2.mp4",
+      "/video3.mp4",
+      "/video4.mp4",
+      "/video5.mp4",
+      "/video6.mp4",
+      "/video7.mp4",
+      "/video8.mp4"
+    ];
 
     const services = [
         {
@@ -85,27 +101,82 @@ const Services: React.FC = () => {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10">
                 <div className="grid md:grid-cols-2 gap-8">
-                    {services.map((service, idx) => (
-                        <div key={idx} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-2xl">
-                                    {service.icon}
-                                </div>
-                                <h3 className="text-2xl font-bold text-slate-800">{service.title}</h3>
-                            </div>
-                            <p className="text-slate-600 mb-6">{service.desc}</p>
-                            <ul className="grid grid-cols-2 gap-3">
-                                {service.features.map((feature, fIdx) => (
-                                    <li key={fIdx} className="flex items-center text-sm text-slate-500 font-medium">
+                    {services.map((service, idx) => {
+                        // Special clickable card for AI Video Creation
+                        if (service.title === "AI Video Creation") {
+                            return (
+                                <div
+                                  key={idx}
+                                  className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 cursor-pointer hover:shadow-xl transition-all"
+                                  onClick={() => setShowVideos(!showVideos)}
+                                  role="button"
+                                  aria-expanded={showVideos}
+                                >
+                                  <div className="flex items-center gap-4 mb-6">
+                                    <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-2xl">
+                                      {service.icon}
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-slate-800">{service.title}</h3>
+                                  </div>
+
+                                  <p className="text-slate-600 mb-6">{service.desc}</p>
+
+                                  <ul className="grid grid-cols-2 gap-3 mb-4">
+                                    {service.features.map((feature, fIdx) => (
+                                      <li key={fIdx} className="flex items-center text-sm text-slate-500 font-medium">
                                         <svg className="w-4 h-4 text-purple-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                         </svg>
                                         {feature}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
+                                      </li>
+                                    ))}
+                                  </ul>
+
+                                  <div className="text-purple-600 font-semibold">
+                                    {showVideos ? "Hide Examples ▲" : "Show Examples ▼"}
+                                  </div>
+
+                                  {/* Video grid (shows when toggled) */}
+                                  {showVideos && (
+                                    <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                      {VIDEO_FILES.map((src, i) => (
+                                        <div key={i} className="rounded-xl overflow-hidden shadow-md bg-black">
+                                          <video
+                                            src={src}
+                                            controls
+                                            className="w-full h-60 object-cover bg-black"
+                                          />
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                            );
+                        }
+
+                        // Default card for others
+                        return (
+                            <div key={idx} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-2xl">
+                                        {service.icon}
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-slate-800">{service.title}</h3>
+                                </div>
+                                <p className="text-slate-600 mb-6">{service.desc}</p>
+                                <ul className="grid grid-cols-2 gap-3">
+                                    {service.features.map((feature, fIdx) => (
+                                        <li key={fIdx} className="flex items-center text-sm text-slate-500 font-medium">
+                                            <svg className="w-4 h-4 text-purple-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        );
+                    })}
                 </div>
 
                 {/* AI Demo Section */}
