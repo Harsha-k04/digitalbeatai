@@ -22,7 +22,7 @@ export default function FooterWithIcons() {
           <a href="#" aria-label="Spotify" className="hover:opacity-80">
             <svg className="w-6 h-6" viewBox="0 0 168 168" fill="currentColor"><path d="M84 0a84 84 0 1084 84 84 84 0 00-84-84zm38.9 121.2a4.4 4.4 0 01-6 1.5c-16.5-10.1-37.4-12.4-62-6.8a4.4 4.4 0 11-2.2-8.5c26.9-6.8 50.3-4.1 69.7 7.6a4.4 4.4 0 01.5 6.2zM125 95a5 5 0 11-6.3 7.9c-19-15.3-56.9-19.8-82.7-10.8a5 5 0 11-3-9.5c29.3-9.3 71.6-4.2 92 12.4zM130 72.8a5.7 5.7 0 01-8.1 1.9c-22.2-13.9-63.4-15.7-86.8-8.6a5.7 5.7 0 01-4.1-10.5c27.8-11 73.2-9 100.4 9.2.3.2.5.4.6.5z"/></svg>
           </a>
-          <a href="#" aria-label="Instagram" className="hover:opacity-80">
+          <a href="https://www.instagram.com/digitalbeatai?igsh=czl3cG84bzBlZjBr" aria-label="Instagram" className="hover:opacity-80">
             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 7.5A4.5 4.5 0 1016.5 14 4.5 4.5 0 0012 9.5zm6.8-3.6a1.1 1.1 0 11-1.1-1.1 1.1 1.1 0 011.1 1.1z"/></svg>
           </a>
           <a href="#" aria-label="Facebook" className="hover:opacity-80">
