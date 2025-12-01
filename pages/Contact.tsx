@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { db } from "../lib/firebaseClient";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
