@@ -80,7 +80,9 @@ const Contact: React.FC = () => {
                   <span className="text-xs uppercase text-slate-500 font-bold tracking-wider">Follow Us</span>
                   <div className="flex gap-3 mt-2">
                     <span className="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-xs">YT</span>
-                    <span className="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-xs">IG</span>
+                    <a href="https://www.instagram.com/digitalbeatai?igsh=czl3cG84bzBlZjBr" className="w-8 h-8 rounded bg-slate-800 flex items-center justify-center hover:bg-purple-600 transition-colors">
+                      IG
+                    </a>
                     <span className="w-8 h-8 rounded bg-slate-800 flex items-center justify-center text-xs">FB</span>
                   </div>
                 </div>
