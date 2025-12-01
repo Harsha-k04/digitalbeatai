@@ -1,8 +1,32 @@
 import React, { useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { 
+  getFirestore, 
+  collection, 
+  addDoc, 
+  serverTimestamp 
+} from "firebase/firestore";
 
+// -----------------------
+// Firebase Config
+// -----------------------
+const firebaseConfig = {
+  apiKey: "AIzaSyBT3FhspI9k5JS3_DKLEUeGLgBgD8T_2K4",
+  authDomain: "digitalbeatai.firebaseapp.com",
+  projectId: "digitalbeatai",
+  storageBucket: "digitalbeatai.firebasestorage.app",
+  messagingSenderId: "572974734356",
+  appId: "1:572974734356:web:a03160fc21f6ae0bf0db01",
+  measurementId: "G-WC774W5LWK",
+};
 
+// Initialize Firebase only once
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// -----------------------
+// Component
+// -----------------------
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -13,12 +37,16 @@ const Contact: React.FC = () => {
 
   const [submitted, setSubmitted] = useState(false);
 
+  // Submit handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
       await addDoc(collection(db, "contact_messages"), {
-        ...formData,
+        name: formData.name,
+        email: formData.email,
+        service: formData.service,
+        message: formData.message,
         createdAt: serverTimestamp(),
       });
 
@@ -33,6 +61,7 @@ const Contact: React.FC = () => {
     <div className="bg-slate-50 min-h-screen py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+
           {/* Info Side */}
           <div className="bg-slate-900 p-10 md:w-1/3 text-white flex flex-col justify-between">
             <div>
@@ -46,6 +75,7 @@ const Contact: React.FC = () => {
                   <span className="text-xs uppercase text-slate-500 font-bold tracking-wider">Email</span>
                   <p className="text-purple-300">hello@digitalbeatai.com</p>
                 </div>
+
                 <div>
                   <span className="text-xs uppercase text-slate-500 font-bold tracking-wider">Follow Us</span>
                   <div className="flex gap-3 mt-2">
@@ -75,6 +105,8 @@ const Contact: React.FC = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                
+                {/* Name */}
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
                   <input
@@ -86,6 +118,7 @@ const Contact: React.FC = () => {
                   />
                 </div>
 
+                {/* Email */}
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
                   <input
@@ -97,6 +130,7 @@ const Contact: React.FC = () => {
                   />
                 </div>
 
+                {/* Service */}
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Service Required</label>
                   <select
@@ -112,6 +146,7 @@ const Contact: React.FC = () => {
                   </select>
                 </div>
 
+                {/* Message */}
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Message</label>
                   <textarea
@@ -123,15 +158,18 @@ const Contact: React.FC = () => {
                   ></textarea>
                 </div>
 
+                {/* Submit */}
                 <button
                   type="submit"
                   className="w-full bg-purple-600 text-white font-bold py-3 rounded-lg hover:bg-purple-700 transition-colors shadow-lg"
                 >
                   Send Message
                 </button>
+
               </form>
             )}
           </div>
+
         </div>
       </div>
     </div>
