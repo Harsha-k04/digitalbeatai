@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
             <p className="text-sm mb-4">hello@digitalbeatai.com</p>
             <div className="flex space-x-4">
               {/* Social Placeholders */}
-              <a href="#" className="w-8 h-8 rounded bg-slate-800 flex items-center justify-center hover:bg-purple-600 transition-colors">
+              <a href="https://youtube.com/@digitalbeatenglish?si=rVQpc3srliXnImVL" className="w-8 h-8 rounded bg-slate-800 flex items-center justify-center hover:bg-purple-600 transition-colors">
                 YT
               </a>
               <a href="https://www.instagram.com/digitalbeatai?igsh=czl3cG84bzBlZjBr" className="w-8 h-8 rounded bg-slate-800 flex items-center justify-center hover:bg-purple-600 transition-colors">
