@@ -78,7 +78,7 @@ const UploadForm: React.FC<UploadFormProps> = ({ onUploadSuccess }) => {
       
       // --- SEND EMAIL USING GOOGLE APPS SCRIPT ---
       try {
-        await fetch("https://script.google.com/macros/library/d/13RlgLcCjPbIxF8aqgsiMhw-191Jg-fbH_yJlmkTnJpH71357i9A9yPsC/2", {
+        await fetch("https://script.google.com/macros/s/AKfycbzM_6uwR8JErOY8CcMNt2Y9FiZgNhEawjGdStlY3R5Psm4sa1yuS-8Rahcfh4S1LkPH1Q/exec", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
