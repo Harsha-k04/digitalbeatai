@@ -71,11 +71,31 @@ const UploadForm: React.FC<UploadFormProps> = ({ onUploadSuccess }) => {
     }, 200);
 
     // Mock API Delay
-    setTimeout(() => {
+    setTimeout(async () => {
       clearInterval(interval);
       setProgress(100);
       setUploadStatus('success');
       
+      // --- SEND EMAIL USING GOOGLE APPS SCRIPT ---
+      try {
+        await fetch("YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: file.name,
+            type: file.type,
+            size: (file.size / 1024 / 1024).toFixed(2),
+            message: "A new user uploaded a file"
+          })
+        });
+        console.log("Email notification sent via Google Script");
+      } catch (error) {
+        console.error("Failed to send email", error);
+      }
+      // -------------------------------------------
+
       // Track Event (Mocking GA)
       console.log(`[Analytics] Event: file_upload | File: ${file.name}`);
       
@@ -98,13 +118,7 @@ const UploadForm: React.FC<UploadFormProps> = ({ onUploadSuccess }) => {
 
     try {
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const model = ai.models.getGenerativeModel({ model: "gemini-2.5-flash" }); // Fallback method if specific model config fails in this strict environment, but strictly standard is `ai.models.generateContent`
-
-      // Note: In a real browser environment without a backend proxy, 
-      // reading file bytes for direct Gemini API calls can be heavy or restricted. 
-      // We will simulate a content idea generation based on file name/type for this demo 
-      // if actual byte reading is too complex for this snippet scope, 
-      // BUT let's try to generate a real prompt based on metadata.
+      const model = ai.models.getGenerativeModel({ model: "gemini-2.5-flash" });
 
       const prompt = `I am uploading a file named "${file.name}" of type "${file.type}". 
       Suggest 3 creative titles and a short marketing description for this content piece. 
