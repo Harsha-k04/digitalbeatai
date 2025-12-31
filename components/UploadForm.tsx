@@ -80,8 +80,9 @@ const UploadForm: React.FC<UploadFormProps> = ({ onUploadSuccess }) => {
       try {
         await fetch("https://script.google.com/macros/s/AKfycbzM_6uwR8JErOY8CcMNt2Y9FiZgNhEawjGdStlY3R5Psm4sa1yuS-8Rahcfh4S1LkPH1Q/exec", {
           method: "POST",
+          mode: "no-cors",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "text/plain"
           },
           body: JSON.stringify({
             name: file.name,
